@@ -1,5 +1,7 @@
 #! /bin/bash
 
+echo "${0} ${@}";
+
 # If required,
 # run commands from the in-between versions.
 #yesman-ins-pre-inter "${repo}" "${pkg_name}" "${ver_dest}" "${ver_src}" "${arch}" '*';
@@ -9,5 +11,5 @@
 
 # Run the precommands specific for this version.
 #rm -rf /usr/lib/libzita-resampler.so.1;
-echo "${0}";
+
 exit 2;

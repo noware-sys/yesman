@@ -12,11 +12,11 @@ do
 	
 	# Retrieve some values.
 	#repo='';
-	arch=$(pacman --query --info "${pkg_name}" | grep 'Architecture' - | cut --delimiter=':' --fields=2 | xargs);
+	arch=$(pacman --query --info "${pkg_name}" | grep 'Architecture' - | cut --delimiter=':' --fields=2 - | xargs);
 	# Because this script would only be triggered when reinstalling, downgrading, or upgrading,
 	# a version is expected to always be installed.
-	ver_src=$(pacman --query --info "${pkg_name}" | grep 'Version' - | cut --delimiter=':' --fields=2 | xargs);
-	ver_dest=$(pacman --sync --info "${pkg_name}" | grep 'Version' - | cut --delimiter=':' --fields=2 | xargs);
+	ver_src=$(pacman --query --info "${pkg_name}" | grep 'Version' - | cut --delimiter=':' --fields=2 - | xargs);
+	ver_dest=$(pacman --sync --info "${pkg_name}" | grep 'Version' - | cut --delimiter=':' --fields=2 - | xargs);
 	
 	# Do not activate when reinstalling the same version.
 	if test "${ver_dest}" == "${ver_src}";
@@ -30,76 +30,91 @@ do
 	if test -x "/etc/yesman/${pkg_name}-${ver_dest}-${arch}-ins-pre.sh";
 	then
 		# Run it.
-		echo -e -n "Running '""/etc/yesman/${pkg_name}-${ver_dest}-${arch}-ins-pre.sh""'...\n";
-		"/etc/yesman/${pkg_name}-${ver_dest}-${arch}-ins-pre.sh";
+		echo -e -n "Running '""/etc/yesman/${pkg_name}-${ver_dest}-${arch}-ins-pre.sh ${pkg_name} ${ver_src} ${ver_dest} ${arch}""'...\n";
+		"/etc/yesman/${pkg_name}-${ver_dest}-${arch}-ins-pre.sh" "${pkg_name}" "${ver_src}" "${ver_dest}" "${arch}";
 		
 		error=${?};
 		if test ${error} -ne 0;
 		then
-			echo "exiting[${error}]";
+			echo "exit[${error}]";
 			exit ${error};
 		fi;
-		echo "exit[${error}]";
-	
-	# This package; any version; this architecture.
-	elif test -x "/etc/yesman/${pkg_name}-any-${arch}-ins-pre.sh";
-	then
-		# Run it.
-		echo -e -n "Running '""/etc/yesman/${pkg_name}-any-${arch}-ins-pre.sh""'...\n";
-		"/etc/yesman/${pkg_name}-any-${arch}-ins-pre.sh";
-		
-		error=${?};
-		if test ${error} -ne 0;
-		then
-			echo "exiting[${error}]";
-			exit ${error};
-		fi;
-		echo "exit[${error}]";
+		echo "error[${error}]";
 	
 	# This package; this version; any architecture.
 	elif test -x "/etc/yesman/${pkg_name}-${ver_dest}-any-ins-pre.sh";
 	then
 		# Run it.
-		echo -e -n "Running '""/etc/yesman/${pkg_name}-${ver_dest}-any-ins-pre.sh""'...\n";
-		"/etc/yesman/${pkg_name}-${ver_dest}-any-ins-pre.sh";
+		echo -e -n "Running '""/etc/yesman/${pkg_name}-${ver_dest}-any-ins-pre.sh ${pkg_name} ${ver_src} ${ver_dest} ${arch}""'...\n";
+		"/etc/yesman/${pkg_name}-${ver_dest}-any-ins-pre.sh" "${pkg_name}" "${ver_src}" "${ver_dest}" "${arch}";
 		
 		error=${?};
 		if test ${error} -ne 0;
 		then
-			echo "exiting[${error}]";
+			echo "exit[${error}]";
 			exit ${error};
 		fi;
-		echo "exit[${error}]";
+		echo "error[${error}]";
+	
+	# This package; any version; this architecture.
+	elif test -x "/etc/yesman/${pkg_name}-any-${arch}-ins-pre.sh";
+	then
+		# Run it.
+		echo -e -n "Running '""/etc/yesman/${pkg_name}-any-${arch}-ins-pre.sh ${pkg_name} ${ver_src} ${ver_dest} ${arch}""'...\n";
+		"/etc/yesman/${pkg_name}-any-${arch}-ins-pre.sh" "${pkg_name}" "${ver_src}" "${ver_dest}" "${arch}";
+		
+		error=${?};
+		if test ${error} -ne 0;
+		then
+			echo "exit[${error}]";
+			exit ${error};
+		fi;
+		echo "error[${error}]";
 	
 	# This package; any version; any architecture.
 	elif test -x "/etc/yesman/${pkg_name}-any-any-ins-pre.sh";
 	then
 		# Run it.
-		echo -e -n "Running '""/etc/yesman/${pkg_name}-any-any-ins-pre.sh""'...\n";
-		"/etc/yesman/${pkg_name}-any-any-ins-pre.sh";
+		echo -e -n "Running '""/etc/yesman/${pkg_name}-any-any-ins-pre.sh ${pkg_name} ${ver_src} ${ver_dest} ${arch}""'...\n";
+		"/etc/yesman/${pkg_name}-any-any-ins-pre.sh" "${pkg_name}" "${ver_src}" "${ver_dest}" "${arch}";
 		
 		error=${?};
 		if test ${error} -ne 0;
 		then
-			echo "exiting[${error}]";
+			echo "exit[${error}]";
 			exit ${error};
 		fi;
-		echo "exit[${error}]";
+		echo "error[${error}]";
+	
+	# Any package; any version; this architecture.
+	if test -x "/etc/yesman/any-any-${arch}-ins-pre.sh";
+	then
+		# Run it.
+		echo -e -n "Running '""/etc/yesman/any-any-${arch}-ins-pre.sh ${pkg_name} ${ver_src} ${ver_dest} ${arch}""'...\n";
+		"/etc/yesman/any-any-${arch}-ins-pre.sh" "${pkg_name}" "${ver_src}" "${ver_dest}" "${arch}";
+		
+		error=${?};
+		if test ${error} -ne 0;
+		then
+			echo "exit[${error}]";
+			exit ${error};
+		fi;
+		echo "error[${error}]";
 	
 	# Any package; any version; any architecture.
 	elif test -x "/etc/yesman/any-any-any-ins-pre.sh";
 	then
 		# Run it.
-		echo -e -n "Running '""/etc/yesman/any-any-any-ins-pre.sh""'...\n";
-		"/etc/yesman/any-any-any-ins-pre.sh";
+		echo -e -n "Running '""/etc/yesman/any-any-any-ins-pre.sh ${pkg_name} ${ver_src} ${ver_dest} ${arch}""'...\n";
+		"/etc/yesman/any-any-any-ins-pre.sh" "${pkg_name}" "${ver_src}" "${ver_dest}" "${arch}";
 		
 		error=${?};
 		if test ${error} -ne 0;
 		then
-			echo "exiting[${error}]";
+			echo "exit[${error}]";
 			exit ${error};
 		fi;
-		echo "exit[${error}]";
+		echo "error[${error}]";
 	fi;
 done < /dev/stdin;
 
