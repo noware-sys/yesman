@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Running yesman prehook...
+When = PreTransaction
+#Depends = yesman
+Exec = /usr/bin/yesman-ins-pre.sh
+AbortOnFail
+NeedsTargets

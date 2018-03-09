@@ -1,0 +1,8 @@
+known_hosts
+
+# Temporary
+cfg
+src/ca-certificates-utils-20170307-1-pre.sh
+src/name-ver-arch.hook
+src/yesman-pre.hook
+src/yesman-post.hook

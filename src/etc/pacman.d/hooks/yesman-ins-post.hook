@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Running yesman posthook...
+When = PostTransaction
+#Depends = yesman
+Exec = /usr/bin/yesman-ins-post.sh
+NeedsTargets

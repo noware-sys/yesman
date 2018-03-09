@@ -1,0 +1,11 @@
+yesman
+bacman
+stallman
+stalman
+bacpac
+bacpacman
+logman
+pacman.log
+pacman-log
+pacman.bak
+pacman-bak

@@ -1,0 +1,1 @@
+A pacman helper intended to ease system maintenance by automating it in general and upgrades in specific, as completely as it can
