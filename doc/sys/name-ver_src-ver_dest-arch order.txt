@@ -1,0 +1,37 @@
+name-ver_src-ver_dest-arch
+
+# raw
+1. spec-spec-spec-spec
+2. spec-spec-spec-any
+3. spec-spec-any-spec
+4. spec-spec-any-any
+5. spec-any-spec-spec
+6. spec-any-spec-any
+7. spec-any-any-spec
+8. spec-any-any-any
+9. any-spec-spec-spec
+10. any-spec-spec-any
+11. any-spec-any-spec
+12. any-spec-any-any
+13. any-any-spec-spec
+14. any-any-spec-any
+15. any-any-any-spec
+16. any-any-any-any
+
+# used
+1. spec-spec-spec-spec
+2. spec-spec-spec-any
+3. spec-spec-any-spec
+4. spec-spec-any-any
+5. spec-any-spec-spec
+6. spec-any-spec-any
+7. spec-any-any-spec
+8. spec-any-any-any
+#9. any-spec-spec-spec
+#10. any-spec-spec-any
+#11. any-spec-any-spec
+#12. any-spec-any-any
+13. any-any-spec-spec
+#14. any-any-spec-any
+15. any-any-any-spec
+16. any-any-any-any
