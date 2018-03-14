@@ -7,5 +7,5 @@ Target = *
 Description = Running yesman posthook...
 When = PostTransaction
 #Depends = yesman
-Exec = /usr/bin/yesman-ins-post.sh
+Exec = /usr/bin/yesman-ins.sh post
 NeedsTargets

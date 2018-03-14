@@ -1,0 +1,3 @@
+#! /bin/bash
+
+pacman -Qu --dbpath /var/lib/pacman-nxt/ | grep -v '\[.*\]' - > /var/lib/pacman-nxt/pkg.lst;

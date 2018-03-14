@@ -7,6 +7,6 @@ Target = *
 Description = Running yesman prehook...
 When = PreTransaction
 #Depends = yesman
-Exec = /usr/bin/yesman-ins-pre.sh
+Exec = /usr/bin/yesman-ins.sh pre
 AbortOnFail
 NeedsTargets

@@ -18,7 +18,7 @@ name-ver_src-ver_dest-arch
 15. any-any-any-spec
 16. any-any-any-any
 
-# used
+# possible usage
 1. spec-spec-spec-spec
 2. spec-spec-spec-any
 3. spec-spec-any-spec

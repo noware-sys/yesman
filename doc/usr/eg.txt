@@ -1,1 +1,15 @@
-yesman -- Sy
+# prerequisite
+yesman-init
+
+# simple
+yesman-sync
+yesman-list
+yesman -Syu
+
+# custom commands in between pre and post
+yesman-sync
+yesman-list
+yesman-pre
+pacman -Sy
+pacman -Su
+yesman-post
