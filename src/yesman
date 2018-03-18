@@ -11,8 +11,8 @@ then
 	exit 1;
 fi;
 
-# effective run
-pacman "${@}";
+# the effective run
+"${@}";
 
 if [ $? -ne 0 ];
 then

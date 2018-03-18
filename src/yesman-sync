@@ -1,0 +1,3 @@
+#! /bin/bash
+
+fakeroot -- pacman -Sy --dbpath /var/lib/pacman-next/ --logfile /var/lib/pacman-next/pacman.log;

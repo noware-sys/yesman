@@ -4,7 +4,7 @@ yesman-init
 # simple
 yesman-sync
 yesman-list
-yesman -Syu
+yesman pacman -Syu
 
 # custom commands in between pre and post
 yesman-sync

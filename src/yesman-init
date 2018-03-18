@@ -3,5 +3,5 @@
 DBPath="${DBPath:-/var/lib/pacman/}"
 eval $(awk -F' *= *' '$1 ~ /DBPath/ { print $1 "=" $2 }' /etc/pacman.conf)
 
-mkdir -p /var/lib/pacman-nxt/
-ln -s "${DBPath}/local" /var/lib/pacman-nxt/
+mkdir -p /var/lib/pacman-next/
+ln -s "${DBPath}/local" /var/lib/pacman-next/
